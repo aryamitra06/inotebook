@@ -4,6 +4,7 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const fetchuser = require('../middleware/fetchuser');
 
 
 // <============ Create a User using: POST "/api/auth/createuser". No login required ============>
@@ -83,6 +84,14 @@ async (req, res) => {
       const authtoken = jwt.sign(data, JWT_SECRET);
       res.json({authtoken})
 
+})
+
+// <============ Get logged in user details: POST "/api/auth/getuser". Login is required============>
+
+router.post('/getuser', fetchuser, async (req, res) => {
+  userId = req.user.id;
+  const user = await User.findById(userId).select('-password');
+  res.send(user);
 })
 
 
