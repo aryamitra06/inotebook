@@ -31,7 +31,7 @@ async(req, res) => {
   res.json(savedNote);
 })
 
-// <==== ROUTE (put): Updating notes !!!LOGIN REQUIRED!!!!====>
+// <==== ROUTE (put): Updating note !!!LOGIN REQUIRED!!!!====>
 router.put('/updatenote/:id', fetchuser, async(req, res) => {
 
   const {title, description, tag} = req.body;
@@ -56,7 +56,25 @@ router.put('/updatenote/:id', fetchuser, async(req, res) => {
    note = await Note.findByIdAndUpdate(req.params.id, {$set: newNote}, {new:true})
    res.json({note});
 
+})
 
+   // <==== ROUTE (delete): Deleting note !!!LOGIN REQUIRED!!!!====>
+router.delete('/deletenote/:id', fetchuser, async(req, res) => {
+
+      // <== making it more secure ==>
+    let note = await Note.findById(req.params.id); // to grab the value from :id in /deletenote/:id
+    if(!note){
+        return res.status(404).send("Note not found");
+    }
+  
+    // checking if the jwt user id is same to the note's user id
+    if(note.user.toString() !== req.user.id){
+      return res.status(401).send("Not Allowed");
+  }
+     // updating and saving the note
+     note = await Note.findByIdAndDelete(req.params.id)
+     res.send({ "Success": "Note has been deleted"});
+     
 })
 
 
