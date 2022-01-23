@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
-// Create a User using: POST "/api/auth/createuser". No login required
+// <============ Create a User using: POST "/api/auth/createuser". No login required ============>
 router.post('/createuser', 
 [
   // All the validations
@@ -45,5 +45,45 @@ async (req, res) => {
     const authtoken = jwt.sign(data, JWT_SECRET);
     res.json({authtoken})
 })
+
+// <============ Login user: POST "/api/auth/login". ============>
+
+router.post('/loginuser', 
+[
+  // All the validations
+  body('email', 'Enter a valid email').isEmail(),
+  body('password', 'Password cannot be blank').exists(),
+], 
+async (req, res) => {
+  // If there are errors, return Bad request and the errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+   // Login user auth
+   const {email, password} = req.body;
+   let user = await User.findOne({email});
+   if(!user){
+     return res.status(400).json({error: "Username/Password not matched." });
+   } 
+
+   const passcompare = await bcrypt.compare(password, user.password);
+   if(!passcompare){
+    return res.status(400).json({error: "Username/Password not matched." });
+   }
+
+       // jwt token
+       const data = {
+        user:{
+          id: user.id
+        }
+      }
+      const JWT_SECRET = 'hello@!23';
+      const authtoken = jwt.sign(data, JWT_SECRET);
+      res.json({authtoken})
+
+})
+
 
 module.exports = router
