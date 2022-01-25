@@ -10,6 +10,8 @@ function Noteitem(props) {
           <p className="card-text">
               {props.description}
           </p>
+          <i className="fas fa-edit"></i>
+          <i className="fas fa-trash"></i>
         </div>
       </div>
     </div>
