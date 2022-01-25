@@ -1,7 +1,18 @@
 import React from "react";
 import {Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
+    let location = useLocation();
+    React.useEffect(() => {
+        if(location.pathname === "/"){
+            document.title = "iNotebook"
+        }
+        if(location.pathname === "/about"){
+            document.title = "iNotebook | About"
+        }
+    }, [location]);
+    
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
