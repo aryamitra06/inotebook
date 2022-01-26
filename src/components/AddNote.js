@@ -6,6 +6,7 @@ const AddNote = () => {
 
     const handleClick = (e)=>{
         e.preventDefault();
+        
         addNote(note.title, note.description, note.tag);
         //set all the form field blank after submitting the form
         document.getElementById("title").value = "";

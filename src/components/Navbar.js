@@ -11,6 +11,12 @@ function Navbar() {
         if(location.pathname === "/about"){
             document.title = "iNotebook | About"
         }
+        if(location.pathname === "/login"){
+            document.title = "iNotebook | Login"
+        }
+        if(location.pathname === "/signup"){
+            document.title = "iNotebook | Signup"
+        }
     }, [location]);
     
     return (
@@ -25,7 +31,7 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/about">About</Link>
                             </li>
                             <div>
@@ -33,8 +39,8 @@ function Navbar() {
                         </div>
                     </div>
                         <div className="d-flex">
-                            <Link class="btn btn-primary mx-2" to="/login" role="button">Login</Link>
-                            <Link class="btn btn-primary mx-2" to="/login" role="button">Signup</Link>
+                            <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+                            <Link className="btn btn-primary mx-2" to="/signup" role="button">Signup</Link>
                         </div>
                 </div>
             </nav>
