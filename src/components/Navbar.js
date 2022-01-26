@@ -29,10 +29,13 @@ function Navbar() {
                                 <Link className="nav-link" to="/about">About</Link>
                             </li>
                             <div>
-                                <input type="text" className="form-control" placeholder="Search..." />
                             </div>
                         </div>
                     </div>
+                        <div className="d-flex">
+                            <Link class="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+                            <Link class="btn btn-primary mx-2" to="/login" role="button">Signup</Link>
+                        </div>
                 </div>
             </nav>
 
