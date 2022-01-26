@@ -2,6 +2,7 @@ import { useState } from "react";
 import NoteContext from "./NoteContext";
 // defining the state
 const NoteState = (props) =>{
+
     const notesInitial = [
         {
           "_id": "61ed5675ca1416de2cd7edf7",
@@ -23,11 +24,10 @@ const NoteState = (props) =>{
           }
       ]
 
-    const [notes, setNotes] = useState(notesInitial)
+    const [notes, setNotes] = useState(notesInitial);
 
     // Adding a note
       const addNote = (title, description, tag) =>{
-        console.log("adding note...");
         // api call
         const note = {
                 "_id": "61ed5675ca1416de2cd7edf7",
