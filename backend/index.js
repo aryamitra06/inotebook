@@ -1,9 +1,11 @@
 const connectToMongo = require('./db');
 const express = require('express')
+var cors = require('cors')
+
 
 connectToMongo();
 const app = express();
-
+app.use(cors())
 // Middleware to use req.body
 app.use(express.json());
 
