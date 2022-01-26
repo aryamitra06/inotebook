@@ -11,7 +11,7 @@ const Notes = () => {
       <div className="row my-3">
         <h3>My Notes</h3>
         {notes.map((note) => {
-          return <Noteitem key= {note.id} title={note.title} description = {note.description}/>;
+          return <Noteitem  title={note.title} description = {note.description} _id={note._id}/>;
         })}
       </div>
     </>

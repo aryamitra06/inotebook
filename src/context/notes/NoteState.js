@@ -5,7 +5,7 @@ const NoteState = (props) =>{
 
     const notesInitial = [
         {
-          "_id": "61ed5675ca1416de2cd7edf7",
+          "_id": "61ed5675ca1416de2cd7edkukuf7",
           "user": "61ed033baa9bff88608985c5",
           "title": "this is the first note",
           "description": "this app is nice!",
@@ -14,7 +14,7 @@ const NoteState = (props) =>{
           "__v": 0
         },
         {
-            "_id": "61ed5675ca1416de2cd7edf7",
+            "_id": "61ed5675ca1416de2cdkukuk7edf7",
             "user": "61ed033baa9bff88608985c5",
             "title": "this is the first note",
             "description": "this app is nice!",
@@ -41,12 +41,15 @@ const NoteState = (props) =>{
         setNotes(notes.concat(note));
       }
     // Deleting a note
-      const deleteNote = () =>{
-
+      const deleteNote = (id) =>{
+          // api call
+        console.log("Deleting the note with id" + id);
+        const newNotes = notes.filter((note)=>{return note._id!==id})
+        setNotes(newNotes)
       }
 
     // Editing a note
-      const editNote = () =>{
+      const editNote = (id, title, description, tag) =>{
 
       }
 
