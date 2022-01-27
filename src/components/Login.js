@@ -22,7 +22,7 @@ const Login = () => {
 
         if(json.authtoken){
             localStorage.setItem('token', json.authtoken); 
-            swal("Welcome back!", "Login success.", "success");
+            swal("Welcome back!", "", "success");
             history.push("/");
         }
         if(json.error){

@@ -1,8 +1,10 @@
 import React from "react";
 import {Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import swal from 'sweetalert';
+import { useLocation, useHistory } from "react-router-dom";
 
 function Navbar() {
+    const history = useHistory();
     let location = useLocation();
     React.useEffect(() => {
         if(location.pathname === "/"){
@@ -19,6 +21,12 @@ function Navbar() {
         }
     }, [location]);
     
+    const handleLogout = () =>{
+        
+        localStorage.removeItem('token');
+        history.push('/login');
+        swal("You're logged out!", "", "success");
+    }
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,11 +46,10 @@ function Navbar() {
                             </div>
                         </div>
                     </div>
-                        <div className="d-flex">
-                            
+                        {!localStorage.getItem('token')?<div className="d-flex">
                             <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
                             <Link className="btn btn-primary mx-2" to="/signup" role="button">Signup</Link>
-                        </div>
+                        </div> : <button className="btn btn-primary mx-2" onClick={handleLogout}>Logout</button>}
                 </div>
             </nav>
 
