@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import NoteState from "./context/notes/NoteState";
 import '../src/globalStyle.css';
-import Alert from "./components/Alert";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 function App() {
@@ -13,7 +12,6 @@ function App() {
     <NoteState>
       <Router>
       <Navbar/>
-      <Alert msg="Success!"/>
         <Switch>
         <Route exact path="/">
             <Home />

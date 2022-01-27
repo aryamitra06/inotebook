@@ -1,4 +1,5 @@
 import { useState } from "react";
+import swal from 'sweetalert';
 import NoteContext from "./NoteContext";
 // defining the state
 const NoteState = (props) =>{
@@ -37,6 +38,8 @@ const NoteState = (props) =>{
         });
         const note = await response.json();
         setNotes(notes.concat(note));
+        //alert
+        swal("New note added!", "", "success");
       }
       // Deleting a note
       const deleteNote = async (id) =>{
@@ -50,6 +53,8 @@ const NoteState = (props) =>{
         });
         const newNotes = notes.filter((note)=>{return note._id!==id});
         setNotes(newNotes);
+        //alert
+        swal("Note deleted!", "", "success");        
       }
 
     // Editing a note

@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom'
 const Login = () => {
     let history = useHistory();
@@ -21,11 +22,12 @@ const Login = () => {
 
         if(json.authtoken){
             localStorage.setItem('token', json.authtoken); 
+            swal("Welcome back!", "Login success.", "success");
             history.push("/");
         }
-        else{
-            alert("Failed to login");
-        }
+        if(json.error){
+            swal("Error!", "Email or password is incorrect.", "error");
+          }
     }
     return (
         <>
