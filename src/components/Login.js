@@ -1,6 +1,6 @@
 import React from 'react';
 import swal from 'sweetalert';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 const Login = () => {
     let history = useHistory();
 

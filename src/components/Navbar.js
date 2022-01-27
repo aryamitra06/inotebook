@@ -39,6 +39,7 @@ function Navbar() {
                         </div>
                     </div>
                         <div className="d-flex">
+                            
                             <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
                             <Link className="btn btn-primary mx-2" to="/signup" role="button">Signup</Link>
                         </div>
