@@ -17,9 +17,6 @@ const Login = () => {
             body: JSON.stringify({email, password})
         });
         const json = await response.json()
-        //print the auth token
-        console.log(json);
-
         if(json.authtoken){
             localStorage.setItem('token', json.authtoken); 
             swal("Welcome back!", "", "success");

@@ -6,7 +6,7 @@ const NoteState = (props) =>{
 
   const host = "http://localhost:5000";
 
-    const notesInitial = [];
+    const notesInitial = []; //here all the notes in json format
     const [notes, setNotes] = useState(notesInitial);
     
     // getting all the notes

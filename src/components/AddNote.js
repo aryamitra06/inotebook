@@ -3,7 +3,6 @@ import noteContext from "../context/notes/NoteContext"
 
 const AddNote = () => {
     const {addNote} = useContext(noteContext);
-
     const handleClick = (e)=>{
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
@@ -35,7 +34,6 @@ const AddNote = () => {
                     <label htmlFor="tag" className="form-label">Tag</label>
                     <input type="text" className="form-control" id="tag" name="tag" onChange={onChange} /> 
                 </div>
-
                 <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
             </form>
         </div>

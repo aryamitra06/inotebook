@@ -1,11 +1,11 @@
 import React from 'react';
-import { useContext } from 'react';
-import NoteContext from '../context/notes/NoteContext';
 function About() {
-  const context = new useContext(NoteContext);
   return(
     <>
-    {context.name}
+    <div className="container mt-4">
+      <h1>About</h1>
+      <h4>Developed with ❤️ by Aryamitra Chaudhuri</h4>
+    </div>
     </>
   );
 }
